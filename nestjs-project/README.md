@@ -32,6 +32,17 @@
 $ npm install
 ```
 
+## Add .env file as mentioned below
+```
+DB_HOST = 'your_host'
+DB_PORT = 'your_port'
+DB_USER = 'your_user'
+DB_PASSWORD = 'your_password'
+DB_DATABASE = 'your_database'
+SECRET_KEY = 'your_secret_key'
+
+```
+
 ## Running the app
 
 ```bash
@@ -58,15 +69,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
