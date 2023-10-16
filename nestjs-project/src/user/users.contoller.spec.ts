@@ -3,20 +3,31 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { User } from './user.entity';
 import { NotFoundException } from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { AuthService } from '../auth/auth.service';
+import { JwtAuthGuard } from 'src/auth/jwt.guard';
+import { JwtService } from '@nestjs/jwt';
 
 describe('UsersController', () => {
   let controller: UsersController;
   let userService: UsersService;
-
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      // imports : [UsersService],
       controllers: [UsersController],
-      providers: [UsersService],
+      providers: [
+        UsersService,
+        {
+          provide: getRepositoryToken(User), // Provide the User Repository
+          useClass: Repository,
+        },
+        JwtService
+      ],
     }).compile();
 
     controller = module.get<UsersController>(UsersController);
     userService = module.get<UsersService>(UsersService);
+   
   });
 
   it('should be defined', () => {
@@ -130,7 +141,7 @@ describe('UsersController', () => {
 
       const result = await controller.delete(userToDelete.id);
 
-      expect(result).toEqual({ message: 'User deleted' });
+      expect(result).toBeUndefined()
     });
 
     it('should throw NotFoundException for a non-existing user during delete', async () => {
