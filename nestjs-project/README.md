@@ -43,6 +43,20 @@ SECRET_KEY = 'your_secret_key'
 
 ```
 
+## Test
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
+
+
 ## Running the app
 
 ```bash
@@ -56,18 +70,25 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Using POSTMAN
+Collecion Link : [Click Here](https://www.postman.com/flight-astronaut-67951803/workspace/nest-api/collection/20215973-ac792273-c682-4466-a3cf-e56a17a07e1b?action=share&creator=20215973)
 
-```bash
-# unit tests
-$ npm run test
+The create, delete and update requests are JWT protected. To use those request follow the steps : 
+1. Go the request named as VERIFY_JWT
+2. Send a request as json in the format
+ ```
+{
+"username" : "give-your-username"
+}
+ ```
+![image](https://github.com/ovalswordsman/ajargh_assgn/assets/54627996/6aeaa379-e263-4639-bac6-3e2acef96786)
 
-# e2e tests
-$ npm run test:e2e
+3. You will receieve an access_token as a response
+4. You have to provide this token in the Bearer Token Under auth section
 
-# test coverage
-$ npm run test:cov
-```
+![image](https://github.com/ovalswordsman/ajargh_assgn/assets/54627996/122f7256-b8aa-4bd4-802b-5d109ccc9577)
+
+5. Now you can create delete and update user accordingly.
 
 
 
