@@ -3,14 +3,16 @@ import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import * as dotenv from 'dotenv';
 import { AuthController } from './auth.controller';
+import { ConfigModule } from '@nestjs/config';
 dotenv.config();
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     // Import the JwtModule to handle JWT token creation and validation.
     JwtModule.register({
       global: true, // Make the JwtModule available globally.
-      secret: "fdidhg8hgfbjbugh", // Secret key for JWT token encryption (replace with a more secure secret).
+      secret: process.env.SECRET_KEY, // Secret key for JWT token encryption (replace with a more secure secret).
       signOptions: { expiresIn: '1h' }, // Set the token expiration time to 1 hour.
     }),
   ],
