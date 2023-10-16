@@ -10,6 +10,7 @@ describe('UsersController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      // imports : [UsersService],
       controllers: [UsersController],
       providers: [UsersService],
     }).compile();

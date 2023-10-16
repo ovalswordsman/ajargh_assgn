@@ -1,5 +1,3 @@
-// src/auth/auth.module.ts
-
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
@@ -9,14 +7,15 @@ dotenv.config();
 
 @Module({
   imports: [
+    // Import the JwtModule to handle JWT token creation and validation.
     JwtModule.register({
-      global : true,
-      secret: "fdidhg8hgfbjbugh",
-      signOptions: { expiresIn: '1h' }, // expiration time for the token.
+      global: true, // Make the JwtModule available globally.
+      secret: "fdidhg8hgfbjbugh", // Secret key for JWT token encryption (replace with a more secure secret).
+      signOptions: { expiresIn: '1h' }, // Set the token expiration time to 1 hour.
     }),
   ],
-  controllers : [AuthController],
-  providers: [AuthService],
-  exports: [AuthService],
+  controllers: [AuthController], // Declare the AuthController for handling authentication routes.
+  providers: [AuthService], // Provide the AuthService for dependency injection.
+  exports: [AuthService], // Export the AuthService to make it available to other modules.
 })
 export class AuthModule {}

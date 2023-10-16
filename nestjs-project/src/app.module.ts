@@ -10,6 +10,7 @@ import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
 
 import * as dotenv from 'dotenv';
+import { UsersService } from './user/users.service';
 dotenv.config();
 
 @Module({
