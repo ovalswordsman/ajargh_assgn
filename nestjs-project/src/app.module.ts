@@ -10,9 +10,8 @@ import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
 
 import * as dotenv from 'dotenv';
-import { AuthController } from './auth/auth.controller';
-
 dotenv.config();
+
 @Module({
   imports: [
     /*Integrating with mysql*/
